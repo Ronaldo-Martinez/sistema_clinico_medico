@@ -5,7 +5,7 @@ def git_pull(request):
     if request.method == 'GET':
         try:
             # Ruta al directorio raíz de tu proyecto Django
-            project_root = 'ubuntu/workspaces/sistema_clinico_medico'
+            project_root = '/ubuntu/workspaces/sistema_clinico_medico'
 
             # Acceder al repositorio git en el directorio raíz
             repo = git.Repo(project_root)

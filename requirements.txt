@@ -18,6 +18,8 @@ django-storages==1.12.3
 djangorestframework==3.13.1
 et-xmlfile==1.1.0
 fonttools==4.33.3
+gitdb==4.0.10
+GitPython==3.1.31
 gunicorn==20.1.0
 h2==4.1.0
 hpack==4.0.0
@@ -44,6 +46,7 @@ pytz==2021.3
 s3transfer==0.5.2
 service-identity==21.1.0
 six==1.16.0
+smmap==5.0.0
 sqlparse==0.4.2
 tinycss2==1.1.1
 Twisted==22.4.0

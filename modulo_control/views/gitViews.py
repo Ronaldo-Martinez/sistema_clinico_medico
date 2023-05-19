@@ -16,7 +16,7 @@ def git_pull(request):
             # Realizar acciones adicionales después del git pull
             # por ejemplo, actualización de dependencias o migraciones
 
-            return HttpResponse('Git pull successful')
+            return HttpResponse('Git pull successful -- Prueba')
         except Exception as e:
             return HttpResponse(f'Error during git pull: {str(e)}', status=500)
 

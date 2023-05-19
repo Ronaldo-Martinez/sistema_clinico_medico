@@ -284,16 +284,15 @@ def vista_adminitracion_empleados(request):
     else:
         return render(request,"Control/error403.html")
 
-@login_required()  
 def lista_empleados(request):
-    if request.user.roles.codigo_rol == 'ROL_ADMIN':
+    #if request.user.roles.codigo_rol == 'ROL_ADMIN':
         empleados = Empleado.objects.all().order_by('-roles').reverse()
         #print(empleados[0].roles)
         serializer = EmpleadoSerializer(empleados, many=True)
         return JsonResponse(serializer.data, safe=False)
-    else:
-        data = "Acceso denegado"
-        return JsonResponse({'data': data}, safe=False)  
+    #else:
+    #    data = "Acceso denegado"
+    #    return JsonResponse({'data': data}, safe=False)  
 
 def get_empleado(request, cod_empleado):
     if request.user.roles.codigo_rol == 'ROL_ADMIN':

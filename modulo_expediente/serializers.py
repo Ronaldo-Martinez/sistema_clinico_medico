@@ -127,4 +127,9 @@ class RecetaOrdenExamenLaboratorioItemSerializer(serializers.ModelSerializer):
         model=RecetaOrdenExamenLaboratorioItem
         fields=['id_receta_orden_examen_laboratorio_item','muestra', 'nombre_examen']
 
+class ContieneConsultaSerializerSGI(serializers.ModelSerializer):
+    class Meta:
+        model = ContieneConsulta
+        fields = '__all__'
+        depth = 1
 

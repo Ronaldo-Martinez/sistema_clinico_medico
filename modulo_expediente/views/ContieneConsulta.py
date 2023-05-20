@@ -3,9 +3,11 @@ from datetime import datetime
 from modulo_expediente.models import (
     Consulta,  ContieneConsulta, Expediente, 
     RecetaMedica, SignosVitales)
+from modulo_expediente.serializers import ContieneConsultaSerializerSGI
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 @csrf_exempt
 @login_required()
 #Metodo que devuelve los datos del objeto contiene consulta en json
@@ -132,3 +134,25 @@ def eliminar_cola(request, id_paciente):
             'data':'El paciente no se encuentra en la cola'
         }
     return JsonResponse(response, safe=False)
+
+def consultarRegistroConsultas(request):
+    #Recuperando la Fecha
+    try:
+        fecha=request.GET.get('fecha','')
+        fecha = datetime.strptime(fecha, "%Y-%m-%d").date()
+        queryConsultas=ContieneConsulta.objects.filter(fecha_de_cola=fecha)
+        consultas=ContieneConsultaSerializerSGI(queryConsultas, many=True)
+
+        response={
+                'type':'success',
+                'title':'Informe generado',
+                'data':consultas.data
+            }
+        return JsonResponse( response, safe=False)
+    except:
+        response={
+                'type':'warning',
+                'title':'Ingrese una fecha valida',
+                'data':""
+            }
+        return JsonResponse( response, safe=False)

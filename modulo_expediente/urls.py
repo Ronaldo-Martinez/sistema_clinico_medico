@@ -12,7 +12,7 @@ from modulo_expediente.views.ReferenciaMedica import (ReferenciaMedicaView,
 ReferenciaMedicaUpdate, ReferenciaMedicaPdfView)
 from modulo_expediente.views.RecetaMedica import RecetaMedicaPdfView
 from modulo_expediente.views.DocumentosExternos import ExamenesExternosCreateView, DocumentosExternosURLview, DocumentosExternosURLDownload
-from modulo_expediente.views.ContieneConsulta import (agregar_cola,get_cola ,eliminar_cola )
+from modulo_expediente.views.ContieneConsulta import (agregar_cola,get_cola ,eliminar_cola, consultarRegistroConsultas )
 from modulo_expediente.views.Agenda import (CitaConsultaView, AgendaView, CitaConsultaUpdate)
 from modulo_expediente.views.ControlSubsecuente import (ControlSubsecuenteView,ControlSubsecuenteConsultaView)
 from modulo_expediente.views.RecetaExamen import(RecetaExamenView, RecetaExamenUpdate)
@@ -81,5 +81,8 @@ urlpatterns = [
     
     #Registro masivo de expedientes
     path('registro-masivo/', RegistroMasivoExpedientesView.as_view(), name="registro_masivo_expedientes"),
+
+    ##SGI
+    path('sgi/consultas', consultarRegistroConsultas, name="sgi_consultas"),
 ]
 

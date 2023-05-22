@@ -47,3 +47,9 @@ class ResultadoLaboratorioSerializer(serializers.ModelSerializer):
     class Meta:
         model=Resultado
         fields=['numero_orden','numero_cola_resultado','nombre','apellidos','sexo','edad', 'nombre_examen','fase_examen_lab','fecha','id_resultado','id_expediente','url_resultado']
+
+class RefusultadoSerializerSGI(serializers.ModelSerializer):
+    class Meta:
+        model = Resultado
+        fields = '__all__'
+        depth = 1

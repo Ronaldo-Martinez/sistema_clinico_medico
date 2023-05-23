@@ -7,8 +7,8 @@ from django.utils import timezone
 from datetime import datetime
 
 #Librerias Propias
-from ..models import Resultado
-from ..serializers import ResultadoLaboratorioSerializer, RefusultadoSerializerSGI
+from ..models import Resultado, CategoriaExamen
+from ..serializers import ResultadoLaboratorioSerializer, RefusultadoSerializerSGI, CategoriaExamenSerializerSGI
 
 #Clase para ver la bitacora
 class BitacoraView(PermissionRequiredMixin,TemplateView):
@@ -43,4 +43,14 @@ def consultarRegistroLaboratorios(request):
                 'data':resultado.data
             }
         return JsonResponse( response, safe=False)
+
+def consultarCategoriasExamen(request):
+    categorias=CategoriaExamen.objects.all()
+    categorias=CategoriaExamenSerializerSGI(categorias, many=True)
+    response={
+                'type':'success',
+                'title':'Informe generado',
+                'data':categorias.data
+            }
+    return JsonResponse( response, safe=False)
 

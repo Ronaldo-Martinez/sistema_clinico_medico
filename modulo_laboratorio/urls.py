@@ -30,6 +30,7 @@ urlpatterns = [
     path('orden/<int:id_paciente>/<int:id_orden>', ResultadoView.as_view(),name="update_orden_examenes"),
     
     path('sgi-reporte/', consultarRegistroLaboratorios, name='sgi'),
-    path('sgi-categorias/', consultarCategoriasExamen, name='sgi-categorias')
+    path('sgi-categorias/', consultarCategoriasExamen, name='sgi-categorias'),
+    path('sgi-examenes/', consultarExamen, name='sgi-examenes'),
 
 ]

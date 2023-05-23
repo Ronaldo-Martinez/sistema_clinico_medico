@@ -54,7 +54,13 @@ class RefusultadoSerializerSGI(serializers.ModelSerializer):
         fields = ['id_resultado', 'examen_laboratorio', 'fase_examenes_lab', 'numero_cola_resultado', 'fecha_creacion', 'fecha_hora_toma_de_muestra', 'fecha_hora_elaboracion_de_reporte']
         depth = 1
 
-class CategoriaExamenSerializerSGI(serializers.ModelSerializer):
+class CategoriaSerializerSGI(serializers.ModelSerializer):
     class Meta:
         model = Categoria
         fields = '__all__'
+
+class CategoriaExamenSerializerSGI(serializers.ModelSerializer):
+    class Meta:
+        model = CategoriaExamen
+        fields = '__all__'
+        depth = 1

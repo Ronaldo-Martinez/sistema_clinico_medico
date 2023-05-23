@@ -7,7 +7,7 @@ from django.utils import timezone
 from datetime import datetime
 
 #Librerias Propias
-from ..models import Resultado, CategoriaExamen
+from ..models import Resultado, Categoria
 from ..serializers import ResultadoLaboratorioSerializer, RefusultadoSerializerSGI, CategoriaExamenSerializerSGI
 
 #Clase para ver la bitacora
@@ -45,7 +45,7 @@ def consultarRegistroLaboratorios(request):
         return JsonResponse( response, safe=False)
 
 def consultarCategoriasExamen(request):
-    categorias=CategoriaExamen.objects.all()
+    categorias=Categoria.objects.all()
     categorias=CategoriaExamenSerializerSGI(categorias, many=True)
     response={
                 'type':'success',

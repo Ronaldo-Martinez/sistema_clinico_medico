@@ -1,7 +1,7 @@
 from email.policy import default
 from pyexpat import model
 from rest_framework import serializers
-from .models import CategoriaExamen, ExamenLaboratorio, Resultado
+from .models import CategoriaExamen, ExamenLaboratorio, Resultado, Categoria
 from datetime import datetime
 from django.urls import reverse
 from dateutil.relativedelta import relativedelta
@@ -56,5 +56,5 @@ class RefusultadoSerializerSGI(serializers.ModelSerializer):
 
 class CategoriaExamenSerializerSGI(serializers.ModelSerializer):
     class Meta:
-        model = CategoriaExamen
+        model = Categoria
         fields = '__all__'

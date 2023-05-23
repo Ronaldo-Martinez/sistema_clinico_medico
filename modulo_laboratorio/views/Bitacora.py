@@ -29,7 +29,7 @@ class BitacoraView(PermissionRequiredMixin,TemplateView):
 
 def consultarRegistroLaboratorios(request):
     #Recuperando la Fecha
-    #try:
+    try:
         fechaInicio=request.GET.get('fechaInicio','')
         fechaFin=request.GET.get('fechaFin','')
         idExamen=request.GET.get('idExamen', '')
@@ -42,6 +42,13 @@ def consultarRegistroLaboratorios(request):
                 'type':'success',
                 'title':'Informe generado',
                 'data':resultado.data
+            }
+        return JsonResponse( response, safe=False)
+    except:
+        response={
+                'type':'warning',
+                'title':'Verifique los datos de entrada',
+                'data':''
             }
         return JsonResponse( response, safe=False)
 

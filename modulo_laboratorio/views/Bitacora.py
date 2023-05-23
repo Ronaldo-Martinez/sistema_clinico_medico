@@ -32,9 +32,10 @@ def consultarRegistroLaboratorios(request):
     #try:
         fechaInicio=request.GET.get('fechaInicio','')
         fechaFin=request.GET.get('fechaFin','')
+        idExamen=request.GET.get('idExamen', '')
         fechaInicio = datetime.strptime(fechaInicio, "%Y-%m-%d").date()
         fechaFin = datetime.strptime(fechaFin, "%Y-%m-%d").date()
-        queryConsultas=Resultado.objects.filter(fecha_creacion__range=(fechaInicio, fechaFin))
+        queryConsultas=Resultado.objects.filter(fecha_creacion__range=(fechaInicio, fechaFin), examen_laboratorio__id=idExamen)
         resultado=RefusultadoSerializerSGI(queryConsultas, many=True)
 
         response={

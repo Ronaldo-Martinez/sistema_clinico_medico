@@ -139,8 +139,12 @@ def consultarRegistroConsultas(request):
     #Recuperando la Fecha
     try:
         fecha=request.GET.get('fecha','')
+        fechaFin=request.GET.get('fechaFin', '')
         fecha = datetime.strptime(fecha, "%Y-%m-%d").date()
-        queryConsultas=ContieneConsulta.objects.filter(fecha_de_cola=fecha)
+        if fechaFin=='':
+            queryConsultas=ContieneConsulta.objects.filter(fecha_de_cola=fecha)
+        else:
+            queryConsultas=ContieneConsulta.objects.filter(fecha_de_cola__range=(fecha, fechaFin))
         consultas=ContieneConsultaSerializerSGI(queryConsultas, many=True)
 
         response={

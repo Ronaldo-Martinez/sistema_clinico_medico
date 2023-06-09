@@ -38,6 +38,8 @@ def consultarRegistroLaboratorios(request):
         fechaFin = datetime.strptime(fechaFin, "%Y-%m-%d").date()
         if idCategoria=='':
             queryConsultas=Resultado.objects.filter(fecha_creacion__range=(fechaInicio, fechaFin), examen_laboratorio__id_examen_laboratorio=idExamen)
+        elif idCategoria=='TODOS':
+            queryConsultas=Resultado.objects.filter(fecha_creacion__range=(fechaInicio, fechaFin))
         else:
             queryConsultas=Resultado.objects.filter(fecha_creacion__range=(fechaInicio, fechaFin), examen_laboratorio__categoria__id_categoria=idCategoria)
         resultado=RefusultadoSerializerSGI(queryConsultas, many=True)
